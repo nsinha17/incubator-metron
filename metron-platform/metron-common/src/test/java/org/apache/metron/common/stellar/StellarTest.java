@@ -543,9 +543,10 @@ public class StellarTest {
       put("empty", "");
       put("spaced", "metron is great");
     }};
+    Assert.assertTrue(runPredicate("LENGTH(foo) == 5", v -> variableMap.get(v)));
     Assert.assertTrue(runPredicate("true and TO_UPPER(foo) == 'CASEY'", v -> variableMap.get(v)));
     Assert.assertTrue(runPredicate("foo in [ TO_LOWER('CASEY'), 'david' ]", v -> variableMap.get(v)));
-    Assert.assertTrue(runPredicate("TO_UPPER(foo) in [ TO_UPPER('casey'), 'david' ] and IN_SUBNET(ip, '192.168.0.0/24')", v -> variableMap.get(v)));
+    Assert.assertTrue(runPredicate("TO_UPPER(foo) in [ TO_UPPER('casey'), 'david' ] and " + "IN_SUBNET(ip, '192.168.0.0/24')", v -> variableMap.get(v)));
     Assert.assertFalse(runPredicate("TO_LOWER(foo) in [ TO_UPPER('casey'), 'david' ]", v -> variableMap.get(v)));
   }
 

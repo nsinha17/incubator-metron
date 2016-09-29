@@ -135,6 +135,18 @@ public class StringFunctions {
     }
   }
 
+  @Stellar(name="LENGTH"
+          , description = "Calculates the length of the first argument"
+          , params = { "input - Object" }
+          , returns = "Integer"
+  )
+  public static class Length extends BaseStellarFunction {
+    @Override
+    public Object apply(List<Object> strings) {
+      return strings.get(0)==null?null:strings.get(0).toString().length();
+    }
+  }
+
   @Stellar(name="TRIM"
           , description = "Trims whitespace from both sides of a string."
           , params = { "input - String" }
